@@ -18,9 +18,5 @@ int main(int argc , char * argv[]){
     C= ulAdd(A,B);
     printf("A=0x%lX, B=0x%lX , (A+B)=0x%lX \n" , A,B,C);  
 
-
-    
-
-
-     return 0;
+    return 0;
 }
