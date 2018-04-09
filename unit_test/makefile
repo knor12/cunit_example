@@ -1,7 +1,9 @@
 SHELL = /bin/sh
 
-OBJS_TEST =  add.c test_add.c
-OBJS_PRODUCTION =  add.c main.c
+SRC_TEST= add.c test_add.c
+SRC_Production = add.c main.c
+OBJS_TEST =  ${SRC_TEST:%.c=%.o}
+OBJS_PRODUCTION =  ${SRC_Production:%.c=%.o}
 CFLAG = -Wall -g
 CC = gcc
 INCLUDE =.
@@ -21,6 +23,7 @@ clean:
 	-rm -f *.o core *.core test_add main
 
 .cpp.o:
+	@echo ****************building object files****************
 	${CC} ${CFLAGS} ${INCLUDES} -c $<
 
 run_test:
@@ -31,8 +34,8 @@ run_production_code:
 	@echo ****************running production code****************
 	./main
 
-unit_testing:clean test_add run_test
+unit_testing:test_add run_test
 
-production:clean main run_production_code
+production:main run_production_code
 
 all:unit_testing production 
